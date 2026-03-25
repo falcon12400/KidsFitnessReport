@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>兒童體適能測試結果</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">Kid Fitness Report</p>
+      <h1>小朋友體適能測試結果</h1>
+      <p class="hero-copy">
+        直接從 Excel 複製資料貼上，點選學生就能切換個人圖表，並匯出全班多頁 PDF 簡報。
+      </p>
+    </section>
+
+    <section class="panel intake-panel">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">資料輸入</p>
+          <h2>從 Excel 複製貼上</h2>
+        </div>
+        <button class="ghost-button" id="load-sample-button" type="button">載入範例資料</button>
+      </div>
+      <p class="helper-copy">
+        第一列請放欄位名稱，例如：學號、姓名、柔軟度、肌耐力、心肺耐力。貼上後會自動辨識學生清單與數值欄位。
+      </p>
+      <textarea
+        id="paste-input"
+        class="paste-input"
+        spellcheck="false"
+        placeholder="請直接貼上 Excel 複製的表格資料"
+      ></textarea>
+      <div class="action-row">
+        <button class="primary-button" id="parse-button" type="button">建立學生清單</button>
+        <button class="secondary-button" id="download-pdf-button" type="button">下載所有學生 PDF</button>
+        <span class="status-text" id="status-text">目前使用內建範例資料。</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <article class="panel list-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-kicker">學生清單</p>
+            <h2>點選學生切換報表</h2>
+          </div>
+          <div class="badge" id="student-count">0 位學生</div>
+        </div>
+        <div class="table-wrap">
+          <table class="student-table">
+            <thead id="student-table-head"></thead>
+            <tbody id="student-table-body"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel control-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-kicker">學生切換</p>
+            <h2>從清單中快速選擇</h2>
+          </div>
+        </div>
+        <label class="student-picker" for="student-select">
+          <span class="student-picker-label">選擇學生</span>
+          <select id="student-select"></select>
+        </label>
+      </article>
+
+      <section class="dashboard" id="report-dashboard">
+        <article class="panel chart-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">視覺化總覽</p>
+              <h2 id="student-name">王小明</h2>
+            </div>
+            <div class="badge-group">
+              <div class="badge" id="student-id">學號 1</div>
+              <div class="badge" id="test-date">測試日未提供</div>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="fitnessRadar" aria-label="體適能雷達圖"></canvas>
+          </div>
+        </article>
+
+        <aside class="panel summary-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">測試摘要</p>
+              <h2>本次表現</h2>
+            </div>
+          </div>
+          <div class="summary-stats">
+            <article class="mini-stat">
+              <span class="mini-stat-label">平均分數</span>
+              <strong class="mini-stat-value" id="average-score">0</strong>
+            </article>
+            <article class="mini-stat">
+              <span class="mini-stat-label">最佳項目</span>
+              <strong class="mini-stat-value" id="best-metric">-</strong>
+            </article>
+          </div>
+          <div class="score-grid" id="score-grid"></div>
+          <div class="note-card">
+            <p class="note-title">說明</p>
+            <p id="summary-note">
+              分數已先換算成同一尺度，較適合放在雷達圖比較。正式上線前，建議依年齡與性別建立標準分數規則。
+            </p>
+          </div>
+        </aside>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
