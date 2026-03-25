@@ -23,9 +23,9 @@
       <div class="panel-header">
         <div>
           <p class="panel-kicker">資料輸入</p>
-          <h2>從 Excel 複製貼上</h2>
+          <h2>貼上測試資料</h2>
         </div>
-        <button class="ghost-button" id="load-sample-button" type="button">載入範例資料</button>
+        <button class="ghost-button" id="load-sample-button" type="button">套用範例資料</button>
       </div>
       <p class="helper-copy">
         第一列請放欄位名稱，例如：學號、姓名、柔軟度、肌耐力、心肺耐力。貼上後會自動辨識學生清單與數值欄位。
@@ -37,9 +37,9 @@
         placeholder="請直接貼上 Excel 複製的表格資料"
       ></textarea>
       <div class="action-row">
-        <button class="primary-button" id="parse-button" type="button">建立學生清單</button>
-        <button class="secondary-button" id="download-pdf-button" type="button">下載所有學生 PDF</button>
-        <span class="status-text" id="status-text">目前使用內建範例資料。</span>
+        <button class="primary-button" id="parse-button" type="button">產生報表</button>
+        <button class="secondary-button" id="download-pdf-button" type="button">匯出全班 PDF</button>
+        <span class="status-text" id="status-text">目前顯示的是內建範例資料。</span>
       </div>
     </section>
 
@@ -48,7 +48,7 @@
         <div class="panel-header">
           <div>
             <p class="panel-kicker">學生清單</p>
-            <h2>點選學生切換報表</h2>
+            <h2>查看全班測試資料</h2>
           </div>
           <div class="badge" id="student-count">0 位學生</div>
         </div>
@@ -64,7 +64,7 @@
         <div class="panel-header">
           <div>
             <p class="panel-kicker">學生切換</p>
-            <h2>從清單中快速選擇</h2>
+            <h2>快速切換個人報表</h2>
           </div>
         </div>
         <label class="student-picker" for="student-select">

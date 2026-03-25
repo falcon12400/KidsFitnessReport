@@ -350,7 +350,7 @@ parseButtonEl.addEventListener("click", () => {
   try {
     const parsed = parseTsv(pasteInputEl.value);
     applyParsedData(parsed);
-    setStatus(`已載入 ${parsed.students.length} 位學生資料。`);
+    setStatus(`已產生 ${parsed.students.length} 位學生的報表。`);
   } catch (error) {
     setStatus(error.message, true);
   }
@@ -361,7 +361,7 @@ loadSampleButtonEl.addEventListener("click", () => {
   try {
     const parsed = parseTsv(sampleText);
     applyParsedData(parsed);
-    setStatus("已載入範例資料。");
+    setStatus("已套用範例資料。");
   } catch (error) {
     setStatus(error.message, true);
   }
